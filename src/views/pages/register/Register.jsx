@@ -44,13 +44,11 @@ const Register = () => {
 
         setMessage("✅ Patient registered successfully")
 
-        setTimeout(() => {
-          setMessage("")
-        }, 3000)
+        setTimeout(() => setMessage(""), 3000)
       }
 
       // REGISTER DOCTOR
-      if (type === "doctor") {
+      else if (type === "doctor") {
         if (role !== "ADMIN") {
           setMessage("❌ Only ADMIN can register doctors")
           return
@@ -60,13 +58,13 @@ const Register = () => {
 
         setMessage("✅ Doctor registered successfully")
 
-        setTimeout(() => {
-          setMessage("")
-        }, 3000)
+        setTimeout(() => setMessage(""), 3000)
       }
 
       setUsername("")
       setPassword("")
+      setType("patient")
+
     } catch (err) {
       console.log(err)
 
@@ -76,6 +74,8 @@ const Register = () => {
         setMessage("❌ Unauthorized")
       } else if (err.response?.status === 403) {
         setMessage("❌ Only ADMIN can register doctors")
+      } else if (err.code === "ERR_NETWORK") {
+        setMessage("❌ Cannot connect to server")
       } else {
         setMessage("❌ Registration failed")
       }
@@ -85,10 +85,7 @@ const Register = () => {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
-      style={{
-        minHeight: "100vh",
-        background: "#f1f5f9",
-      }}
+      style={{ minHeight: "100vh", background: "#f1f5f9" }}
     >
       <div
         className="dynamic-card"
@@ -110,7 +107,6 @@ const Register = () => {
             border: "none",
             background: "transparent",
             fontSize: "24px",
-            fontWeight: "bold",
             cursor: "pointer",
             color: "#000",
           }}
@@ -119,30 +115,17 @@ const Register = () => {
         </button>
 
         <div className="text-center mb-4">
-          <h1
-            style={{
-              color: "#16a34a",
-              fontWeight: "bold",
-            }}
-          >
+          <h1 style={{ color: "#16a34a", fontWeight: "bold" }}>
             Create Account
           </h1>
 
           {!role ? (
             <p style={{ color: "#64748b" }}>
-              If you already register, go to login in your account!
-            </p>
-          ) : role === "ADMIN" ? (
-            <p style={{ color: "#64748b" }}>
-              Register Doctor or Patient account
-            </p>
-          ) : role === "DOCTOR" ? (
-            <p style={{ color: "#64748b" }}>
-              Register Doctor or Patient account
+              If you already registered, go to login
             </p>
           ) : (
             <p style={{ color: "#64748b" }}>
-              Register Patient account
+              Register account
             </p>
           )}
         </div>
@@ -152,13 +135,10 @@ const Register = () => {
           <label className="fw-bold mb-2">Account Type</label>
 
           <select
-            className="form-control dynamic-input"
+            className="form-control"
             value={type}
             onChange={(e) => setType(e.target.value)}
-            style={{
-              height: "50px",
-              borderRadius: "10px",
-            }}
+            style={{ height: "50px", borderRadius: "10px" }}
           >
             <option value="patient">Patient</option>
 
@@ -174,14 +154,11 @@ const Register = () => {
 
           <input
             type="text"
-            className="form-control dynamic-input"
+            className="form-control"
             placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            style={{
-              height: "50px",
-              borderRadius: "10px",
-            }}
+            style={{ height: "50px", borderRadius: "10px" }}
           />
         </div>
 
@@ -191,14 +168,11 @@ const Register = () => {
 
           <input
             type="password"
-            className="form-control dynamic-input"
+            className="form-control"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{
-              height: "50px",
-              borderRadius: "10px",
-            }}
+            style={{ height: "50px", borderRadius: "10px" }}
           />
         </div>
 
@@ -223,9 +197,7 @@ const Register = () => {
           <div
             className="mt-4 text-center"
             style={{
-              color: message.includes("✅")
-                ? "#16a34a"
-                : "#dc2626",
+              color: message.includes("✅") ? "#16a34a" : "#dc2626",
               fontWeight: "600",
             }}
           >
