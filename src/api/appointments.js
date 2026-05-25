@@ -1,8 +1,9 @@
 import axios from "axios";
 
-// BASE URL (Netlify safe)
-const API =
-  import.meta.env.VITE_API_URL + "/api/appointments";
+
+import API_URL from "../config/api";
+
+const response = await fetch(`${API_URL}/api/appointments`);
 
 export const getAppointments = async () => {
   const response = await axios.get(API);
