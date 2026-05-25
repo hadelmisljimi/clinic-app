@@ -40,30 +40,30 @@ const Register = () => {
 
       // REGISTER PATIENT
       if (type === "patient") {
-  await registerPatient(username, password)
+        await registerPatient(username, password)
 
-  setMessage("✅ Patient registered successfully")
+        setMessage("✅ Patient registered successfully")
 
-  setTimeout(() => {
-    setMessage("")
-  }, 3000)
-}
+        setTimeout(() => {
+          setMessage("")
+        }, 3000)
+      }
 
       // REGISTER DOCTOR
       if (type === "doctor") {
-  if (role !== "ADMIN") {
-    setMessage("❌ Only ADMIN can register doctors")
-    return
-  }
+        if (role !== "ADMIN") {
+          setMessage("❌ Only ADMIN can register doctors")
+          return
+        }
 
-  await registerDoctor(username, password, token)
+        await registerDoctor(username, password, token)
 
-  setMessage("✅ Doctor registered successfully")
+        setMessage("✅ Doctor registered successfully")
 
-  setTimeout(() => {
-    setMessage("")
-  }, 3000)
-}
+        setTimeout(() => {
+          setMessage("")
+        }, 3000)
+      }
 
       setUsername("")
       setPassword("")
@@ -91,11 +91,10 @@ const Register = () => {
       }}
     >
       <div
-      
+        className="dynamic-card"
         style={{
           width: "520px",
           position: "relative",
-          className: "dynamic-card",
           borderRadius: "20px",
           padding: "45px",
           boxShadow: "0 15px 40px rgba(0,0,0,0.15)",
@@ -103,55 +102,54 @@ const Register = () => {
         }}
       >
         <button
-  onClick={() => window.history.back()}
-  style={{
-    position: "absolute",
-    top: "15px",
-    right: "15px",
-    border: "none",
-    background: "transparent",
-    fontSize: "24px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    color: "#000",
-  }}
->
-  ×
-</button>
-        <div className="text-center mb-4">
-  <h1
-    style={{
-      color: "#16a34a",
-      fontWeight: "bold",
-    }}
-  >
-    Create Account
-  </h1>
+          onClick={() => window.history.back()}
+          style={{
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            border: "none",
+            background: "transparent",
+            fontSize: "24px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            color: "#000",
+          }}
+        >
+          ×
+        </button>
 
-  {!role ? (
-    <p style={{ color: "#64748b" }}>
-      If you already register, go to login in your account!
-    </p>
-  ) : role === "ADMIN" ? (
-    <p style={{ color: "#64748b" }}>
-      Register Doctor or Patient account
-    </p>
-  )  : role === "DOCTOR" ? (
-  <p style={{ color: "#64748b" }}>
-    Register Doctor or Patient account
-  </p>
-) : (
-  <p style={{ color: "#64748b" }}>
-    Register Patient account
-  </p>
-)}
-</div>
+        <div className="text-center mb-4">
+          <h1
+            style={{
+              color: "#16a34a",
+              fontWeight: "bold",
+            }}
+          >
+            Create Account
+          </h1>
+
+          {!role ? (
+            <p style={{ color: "#64748b" }}>
+              If you already register, go to login in your account!
+            </p>
+          ) : role === "ADMIN" ? (
+            <p style={{ color: "#64748b" }}>
+              Register Doctor or Patient account
+            </p>
+          ) : role === "DOCTOR" ? (
+            <p style={{ color: "#64748b" }}>
+              Register Doctor or Patient account
+            </p>
+          ) : (
+            <p style={{ color: "#64748b" }}>
+              Register Patient account
+            </p>
+          )}
+        </div>
 
         {/* TYPE */}
         <div className="mb-3">
-          <label className="fw-bold mb-2">
-            Account Type
-          </label>
+          <label className="fw-bold mb-2">Account Type</label>
 
           <select
             className="form-control dynamic-input"
@@ -162,23 +160,17 @@ const Register = () => {
               borderRadius: "10px",
             }}
           >
-            <option value="patient">
-              Patient
-            </option>
+            <option value="patient">Patient</option>
 
             {role === "ADMIN" && (
-              <option value="doctor">
-                Doctor
-              </option>
+              <option value="doctor">Doctor</option>
             )}
           </select>
         </div>
 
         {/* USERNAME */}
         <div className="mb-3">
-          <label className="fw-bold mb-2">
-            Username
-          </label>
+          <label className="fw-bold mb-2">Username</label>
 
           <input
             type="text"
@@ -195,9 +187,7 @@ const Register = () => {
 
         {/* PASSWORD */}
         <div className="mb-4">
-          <label className="fw-bold mb-2">
-            Password
-          </label>
+          <label className="fw-bold mb-2">Password</label>
 
           <input
             type="password"

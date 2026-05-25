@@ -39,29 +39,29 @@ const Login = () => {
       } else {
         navigate("/appointments")
       }
-    }  catch (err) {
-  console.log(err)
+    } catch (err) {
+      console.log(err)
 
-  // backend vraca 401
-  if (err.response?.status === 401) {
-    setError("❌ Username or password does not exist")
-  }
+      // backend vraca 401
+      if (err.response?.status === 401) {
+        setMessage("❌ Username or password is incorrect")
+      }
 
-  // backend vraca 404
-  else if (err.response?.status === 404) {
-    setError("❌ User does not exist")
-  }
+      // backend vraca 404
+      else if (err.response?.status === 404) {
+        setMessage("❌ User does not exist")
+      }
 
-  // backend nije dostupan
-  else if (err.code === "ERR_NETWORK") {
-    setError("❌ Cannot connect to server")
-  }
+      // backend nije dostupan
+      else if (err.code === "ERR_NETWORK") {
+        setMessage("❌ Cannot connect to server")
+      }
 
-  // ostalo
-  else {
-    setError("❌ Login failed")
-  }
-}
+      // ostalo
+      else {
+        setMessage("❌ Login failed")
+      }
+    }
   }
 
   return (
@@ -84,28 +84,24 @@ const Login = () => {
         }}
       >
         <button
-  onClick={() => window.history.back()}
-  style={{
-    position: "absolute",
-    top: "15px",
-    right: "15px",
-    border: "none",
-    background: "transparent",
-    fontSize: "24px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    color: "#000",
-  }}
->
-  ×
-</button>
+          onClick={() => window.history.back()}
+          style={{
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            border: "none",
+            background: "transparent",
+            fontSize: "24px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            color: "#000",
+          }}
+        >
+          ×
+        </button>
+
         <div className="text-center mb-4">
-          <h1
-            style={{
-              color: "#2563eb",
-              fontWeight: "bold",
-            }}
-          >
+          <h1 style={{ color: "#2563eb", fontWeight: "bold" }}>
             Login to your account
           </h1>
 
@@ -116,9 +112,7 @@ const Login = () => {
 
         {/* USERNAME */}
         <div className="mb-3">
-          <label className="fw-bold mb-2">
-            Username
-          </label>
+          <label className="fw-bold mb-2">Username</label>
 
           <input
             type="text"
@@ -126,18 +120,13 @@ const Login = () => {
             placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            style={{
-              height: "50px",
-              borderRadius: "10px",
-            }}
+            style={{ height: "50px", borderRadius: "10px" }}
           />
         </div>
 
         {/* PASSWORD */}
         <div className="mb-4">
-          <label className="fw-bold mb-2">
-            Password
-          </label>
+          <label className="fw-bold mb-2">Password</label>
 
           <input
             type="password"
@@ -145,10 +134,7 @@ const Login = () => {
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{
-              height: "50px",
-              borderRadius: "10px",
-            }}
+            style={{ height: "50px", borderRadius: "10px" }}
           />
         </div>
 
@@ -168,7 +154,7 @@ const Login = () => {
           LOGIN
         </button>
 
-        {/* REGISTER PATIENT */}
+        {/* REGISTER */}
         <Link
           to="/register"
           className="btn w-100"
