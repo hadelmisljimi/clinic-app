@@ -1,31 +1,40 @@
 import axios from "axios"
+import API_URL from "../config/api"
 
-import API_URL from "../config/api";
-
-const response = await fetch(`${API_URL}/api/auth`);
-
+// LOGIN
 export const login = async (username, password) => {
-  const res = await axios.post(`${API}/login`, {
-    username,
-    password,
-  })
+  const res = await axios.post(
+    `${API_URL}/api/auth/login`,
+    {
+      username,
+      password,
+    }
+  )
 
   return res.data
 }
 
+// REGISTER PATIENT
 export const registerPatient = async (username, password) => {
-  const res = await axios.post(`${API}/register/patient`, {
-    username,
-    password,
-  })
+  const res = await axios.post(
+    `${API_URL}/api/auth/register/patient`,
+    {
+      username,
+      password,
+    }
+  )
 
   return res.data
 }
 
+// REGISTER DOCTOR
 export const registerDoctor = async (username, password, token) => {
   const res = await axios.post(
-    `${API}/register/doctor`,
-    { username, password },
+    `${API_URL}/api/auth/register/doctor`,
+    {
+      username,
+      password,
+    },
     {
       headers: {
         Authorization: `Bearer ${token}`,
