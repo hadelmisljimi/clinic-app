@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:8080/api/patients";
+import API_URL from "../../config/api";
+
+const response = await fetch(`${API_URL}/api/patients`);
 
 // 🔹 inicijali
 const getInitials = (name) => {

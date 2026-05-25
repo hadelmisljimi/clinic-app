@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { specialties, doctorImages } from "./doctors_specialties";
+import API_URL from "../../config/api";
+
+
 
 
 // =====================
@@ -43,7 +46,7 @@ const Doctors = () => {
   // LOAD DOCTORS
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/doctors")
+      .get(`${API_URL}/api/doctors`)
       .then((res) => setDoctors(res.data || []))
       .catch((err) => console.log(err));
   }, []);

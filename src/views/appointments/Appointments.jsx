@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { specialties, doctorImages } from "../doctors/doctors_specialties";
+import API_URL from "../../config/api";
 
 import {
   Calendar,
@@ -166,7 +167,7 @@ const Appointments = () => {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8080/api/appointments"
+        `${API_URL}/api/appointments`
       )
       .then((res) => {
         const formatted = res.data.map(

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { specialties, doctorImages } from "../doctors/doctors_specialties";
+import API_URL from "../../config/api";
 
 const generateSlots = () => {
   const slots = [];
@@ -64,9 +65,9 @@ const BookAppointment = () => {
     try {
       const [docRes, patRes, appRes] =
         await Promise.all([
-          axios.get("http://localhost:8080/api/doctors"),
-          axios.get("http://localhost:8080/api/patients"),
-          axios.get("http://localhost:8080/api/appointments"),
+          axios.get(`${API_URL}/api/doctors`),
+          axios.get(`${API_URL}/api/patients`),
+          axios.get(`${API_URL}/api/appointments`),
         ]);
 
       setDoctors(docRes.data || []);
@@ -177,7 +178,7 @@ const BookAppointment = () => {
       console.log("SENDING:", payload);
 
       await axios.post(
-        "http://localhost:8080/api/appointments",
+        `${API_URL}/api/appointments`,
         payload,
         {
           headers: {

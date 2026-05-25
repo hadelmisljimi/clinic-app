@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import API_URL from "../../config/api";
+
+
 
 // 👉 inicijali (John Smith = JS)
 const getInitials = (name) => {
@@ -14,7 +17,7 @@ const Patients = () => {
   const [search, setSearch] = useState("")
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/patients")
+    axios.get(`${API_URL}/api/patients`)
       .then((res) => {
         console.log("PATIENTS RESPONSE:", res.data)
         setPatients(res.data)

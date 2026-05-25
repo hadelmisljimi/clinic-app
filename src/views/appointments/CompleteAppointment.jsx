@@ -4,7 +4,10 @@ import AppointmentCard from "../../components/AppointmentCard";
 import { specialties } from "../doctors/doctors_specialties";
 import { doctorToSpecialty } from "../doctors/doctors_specialties";
 
-const API = "http://localhost:8080/api/appointments";
+import API_URL from "../../config/api";
+
+const response = await fetch(`${API_URL}/api/appointments`);
+
 
 // =========================
 // DATE FORMAT
