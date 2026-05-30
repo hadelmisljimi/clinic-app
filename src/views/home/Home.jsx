@@ -167,64 +167,96 @@ const Home = () => {
 
 
 
-        @media (max-width: 768px) {
-  .hero {
-    padding: 20px;
-    height: 100vh;
-    align-items: center;
-  }
+        /* MOBILE */
+@media (max-width: 768px) {
 
-  .hero-content {
-    transform: translateY(0);
-    text-align: center;
-    max-width: 100%;
-    padding: 0 10px;
-  }
+    /* HEADER */
+    .navbar,
+    .header,
+    nav {
+        padding: 10px 15px;
+        min-height: 60px;
+    }
 
-  .subtitle {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-  }
+    .navbar-brand img,
+    .logo {
+        height: 40px;
+        width: auto;
+    }
 
-  .hero-content h1 {
-    font-size: 28px;   /* 👈 manji naslov */
-    line-height: 1.2;
-  }
+    .navbar-nav,
+    nav ul {
+        gap: 10px;
+    }
 
-  .hero-content p {
-    font-size: 13px;   /* 👈 manji tekst */
-    line-height: 1.5;
-    max-width: 100%;
-    margin-top: 12px;
-  }
+    .navbar-nav a,
+    nav ul li a {
+        font-size: 13px;
+    }
 
-  .buttons {
-    flex-direction: column;   /* 👈 dugmad jedno ispod drugog */
-    gap: 10px;
-    align-items: center;
-  }
+    /* HERO SECTION */
+    .hero-section,
+    .banner,
+    .hero {
+        min-height: 500px;
+        padding: 30px 15px;
 
-  .btn-primary,
-  .btn-outline {
-    width: 80%;   /* 👈 full mobile buttons */
-    text-align: center;
-    padding: 12px 20px;
-  }
-}
+        background-size: contain !important;
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
 
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 24px;
-  }
+    .hero-content,
+    .banner-content {
+        width: 55%;
+        max-width: 55%;
+    }
 
-  .hero-content p {
-    font-size: 12px;
-  }
+    .hero-content h1,
+    .banner-content h1 {
+        font-size: 32px;
+        line-height: 1.1;
+        margin-bottom: 15px;
+    }
 
-  .btn-primary,
-  .btn-outline {
-    width: 90%;
-  }
+    .hero-content p,
+    .banner-content p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    /* BUTTONS */
+    .hero-buttons,
+    .banner-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .hero-buttons .btn,
+    .banner-buttons .btn {
+        width: 180px;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 12px 15px;
+        font-size: 13px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    footer .left,
+    footer .right {
+        width: auto;
+    }
 }
       `}</style>
     </div>
