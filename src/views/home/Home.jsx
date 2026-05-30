@@ -164,6 +164,68 @@ const Home = () => {
             justify-content: center;
           }
         }
+
+
+
+        @media (max-width: 768px) {
+  .hero {
+    padding: 20px;
+    height: 100vh;
+    align-items: center;
+  }
+
+  .hero-content {
+    transform: translateY(0);
+    text-align: center;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;   /* 👈 manji naslov */
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 13px;   /* 👈 manji tekst */
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  .buttons {
+    flex-direction: column;   /* 👈 dugmad jedno ispod drugog */
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 80%;   /* 👈 full mobile buttons */
+    text-align: center;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 90%;
+  }
+}
       `}</style>
     </div>
   );
