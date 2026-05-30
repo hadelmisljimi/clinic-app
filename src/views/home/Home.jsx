@@ -167,104 +167,91 @@ const Home = () => {
 
 
 
-        /* =========================
-   MOBILE (do 768px)
-========================= */
-@media screen and (max-width: 768px) {
+        @media (max-width:768px){
+
+    html,
+    body{
+        margin:0;
+        padding:0;
+        overflow-x:hidden;
+    }
 
     /* HEADER */
-    header,
-    .navbar {
-        min-height: 60px;
-        padding: 10px 15px;
+    header{
+        width:100%;
+        padding:8px 5px;
     }
 
-    .navbar-nav,
-    .nav-links {
-        gap: 10px;
+    nav{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:5px;
     }
 
-    .navbar-nav a,
-    .nav-links a {
-        font-size: 13px;
-    }
-
-    .avatar,
-    .user-avatar {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
+    nav a{
+        font-size:11px;
+        padding:2px;
+        white-space:nowrap;
     }
 
     /* HERO */
-    .hero-section,
-    .hero {
-        min-height: 520px;
-        padding: 40px 15px;
+    .hero-section{
+        width:100%;
+        min-height:calc(100vh - 110px);
 
-        /* Tvoja slika */
-        background-repeat: no-repeat;
-        background-position: right center;
-        background-size: contain;
+        background-size:cover !important;
+        background-position:center center !important;
+        background-repeat:no-repeat;
+
+        display:flex;
+        align-items:center;
+        padding:20px;
+        box-sizing:border-box;
     }
 
-    /* TEKST LEVO */
-    .hero-content,
-    .hero-text {
-        width: 60%;
-        max-width: 60%;
+    .hero-content{
+        max-width:55%;
     }
 
-    .hero-content h6,
-    .hero-text h6 {
-        font-size: 12px;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
+    .hero-content h1{
+        font-size:30px;
+        line-height:1.1;
+        margin-bottom:10px;
     }
 
-    .hero-content h1,
-    .hero-text h1 {
-        font-size: 28px;
-        line-height: 1.15;
-        margin-bottom: 12px;
-        font-weight: 700;
+    .hero-content p{
+        font-size:13px;
+        line-height:1.5;
     }
 
-    .hero-content p,
-    .hero-text p {
-        font-size: 14px;
-        line-height: 1.6;
-        margin-bottom: 20px;
+    .hero-buttons{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
     }
 
-    /* DUGMAD */
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .hero-buttons .btn {
-        width: 180px;
-        height: 46px;
-        font-size: 14px;
+    .hero-buttons .btn{
+        width:160px;
+        height:42px;
+        font-size:13px;
     }
 
     /* FOOTER */
-    footer {
-        padding: 12px 15px;
-        font-size: 13px;
+    footer{
+        width:100%;
+        min-height:50px;
+        padding:10px 15px;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        font-size:12px;
+        box-sizing:border-box;
     }
 
-    footer .left,
-    footer .right {
-        width: auto;
-    }
 }
       `}</style>
     </div>
