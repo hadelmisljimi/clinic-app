@@ -167,78 +167,86 @@ const Home = () => {
 
 
 
-        /* MOBILE */
-@media (max-width: 768px) {
+        /* =========================
+   MOBILE (do 768px)
+========================= */
+@media screen and (max-width: 768px) {
 
     /* HEADER */
-    .navbar,
-    .header,
-    nav {
-        padding: 10px 15px;
+    header,
+    .navbar {
         min-height: 60px;
-    }
-
-    .navbar-brand img,
-    .logo {
-        height: 40px;
-        width: auto;
+        padding: 10px 15px;
     }
 
     .navbar-nav,
-    nav ul {
+    .nav-links {
         gap: 10px;
     }
 
     .navbar-nav a,
-    nav ul li a {
+    .nav-links a {
         font-size: 13px;
     }
 
-    /* HERO SECTION */
-    .hero-section,
-    .banner,
-    .hero {
-        min-height: 500px;
-        padding: 30px 15px;
-
-        background-size: contain !important;
-        background-repeat: no-repeat;
-        background-position: center right;
+    .avatar,
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
     }
 
+    /* HERO */
+    .hero-section,
+    .hero {
+        min-height: 520px;
+        padding: 40px 15px;
+
+        /* Tvoja slika */
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: contain;
+    }
+
+    /* TEKST LEVO */
     .hero-content,
-    .banner-content {
-        width: 55%;
-        max-width: 55%;
+    .hero-text {
+        width: 60%;
+        max-width: 60%;
+    }
+
+    .hero-content h6,
+    .hero-text h6 {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
     }
 
     .hero-content h1,
-    .banner-content h1 {
-        font-size: 32px;
-        line-height: 1.1;
-        margin-bottom: 15px;
+    .hero-text h1 {
+        font-size: 28px;
+        line-height: 1.15;
+        margin-bottom: 12px;
+        font-weight: 700;
     }
 
     .hero-content p,
-    .banner-content p {
+    .hero-text p {
         font-size: 14px;
-        line-height: 1.5;
+        line-height: 1.6;
         margin-bottom: 20px;
     }
 
-    /* BUTTONS */
-    .hero-buttons,
-    .banner-buttons {
+    /* DUGMAD */
+    .hero-buttons {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 100%;
     }
 
-    .hero-buttons .btn,
-    .banner-buttons .btn {
+    .hero-buttons .btn {
         width: 180px;
-        height: 45px;
+        height: 46px;
         font-size: 14px;
     }
 
