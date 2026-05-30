@@ -50,7 +50,7 @@ const Home = () => {
       {/* STYLE */}
       <style>{`
         .home-page {
-          width: 1200px; 
+          width: 100vw;
           height: 80vh;
           margin: 0;
           overflow: hidden;
@@ -145,8 +145,7 @@ const Home = () => {
           background: rgba(0,0,0,0.05);
         }
 
-      
-
+        
 
 
 
