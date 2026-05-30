@@ -40,24 +40,15 @@ const Login = () => {
         navigate("/appointments")
       }
     }  catch (err) {
-  console.log(err)
+  console.log("LOGIN ERROR:", err);
+  console.log("STATUS:", err.response?.status);
+  console.log("DATA:", err.response?.data);
 
-  // backend vraca 401
-  if (err.response?.status === 401) {
-  setMessage("❌ Username or password is incorrect")
-}
-
-else if (err.response?.status === 404) {
-  setMessage("❌ User does not exist")
-}
-
-else if (err.code === "ERR_NETWORK") {
-  setMessage("❌ Cannot connect to server")
-}
-
-else {
-  setMessage("❌ Login failed")
-}
+  setMessage(
+    err.response?.data?.message ||
+    err.response?.data ||
+    `Error ${err.response?.status}`
+  );
 }
   }
 
