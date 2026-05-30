@@ -67,7 +67,7 @@ const Login = () => {
     position: "relative",
     borderRadius: "20px",
     padding: "45px",
-    boxShadow: "0 15px 40px rgba(0,0,0,0.15)",
+    boxShadow: "0 15px 40px #f1f5f9",
     borderTop: "6px solid #2563eb",
   }}
 >
