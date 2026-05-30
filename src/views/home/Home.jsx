@@ -145,10 +145,7 @@ const Home = () => {
           background: rgba(0,0,0,0.05);
         }
 
-        body {
-  transform: scale(0.7);
-  transform-origin: top left;
-}
+      
 
 
 
