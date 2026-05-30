@@ -50,7 +50,7 @@ const Home = () => {
       {/* STYLE */}
       <style>{`
         .home-page {
-          width: 100vw;
+          width: 1200px; 
           height: 80vh;
           margin: 0;
           overflow: hidden;
@@ -145,114 +145,15 @@ const Home = () => {
           background: rgba(0,0,0,0.05);
         }
 
-        @media (max-width: 768px) {
-          .hero {
-            padding: 40px;
-            height: calc(100vh - 80px);
-          }
-
-          .hero-content {
-            transform: translateY(-10px);
-            text-align: center;
-          }
-
-          .hero-content h1 {
-            font-size: 34px;
-          }
-
-          .buttons {
-            justify-content: center;
-          }
-        }
-
-
-
-        @media (max-width:768px){
-
-    html,
-    body{
-        margin:0;
-        padding:0;
-        overflow-x:hidden;
-    }
-
-    /* HEADER */
-    header{
-        width:100%;
-        padding:8px 5px;
-    }
-
-    nav{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        flex-wrap:wrap;
-        gap:5px;
-    }
-
-    nav a{
-        font-size:11px;
-        padding:2px;
-        white-space:nowrap;
-    }
-
-    /* HERO */
-    .hero-section{
-        width:100%;
-        min-height:calc(100vh - 110px);
-
-        background-size:cover !important;
-        background-position:center center !important;
-        background-repeat:no-repeat;
-
-        display:flex;
-        align-items:center;
-        padding:20px;
-        box-sizing:border-box;
-    }
-
-    .hero-content{
-        max-width:55%;
-    }
-
-    .hero-content h1{
-        font-size:30px;
-        line-height:1.1;
-        margin-bottom:10px;
-    }
-
-    .hero-content p{
-        font-size:13px;
-        line-height:1.5;
-    }
-
-    .hero-buttons{
-        display:flex;
-        flex-direction:column;
-        gap:8px;
-    }
-
-    .hero-buttons .btn{
-        width:160px;
-        height:42px;
-        font-size:13px;
-    }
-
-    /* FOOTER */
-    footer{
-        width:100%;
-        min-height:50px;
-        padding:10px 15px;
-
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-
-        font-size:12px;
-        box-sizing:border-box;
-    }
-
+        body {
+  transform: scale(0.7);
+  transform-origin: top left;
 }
+
+
+
+
+        
       `}</style>
     </div>
   );

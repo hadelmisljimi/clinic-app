@@ -571,112 +571,54 @@ body {
 
 
 
-
-
-
 /* =========================
-   RESPONSIVE MOBILE FIX
+   MOBILE = DESKTOP LOOK
 ========================= */
-
-@media (max-width: 1024px) {
-  .doctors-grid,
-  .patients-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  }
-
-  .modal-card {
-    width: 90%;
-    max-width: 420px;
-  }
-}
 
 @media (max-width: 768px) {
 
-  /* PAGE PADDING FIX */
-  .doctors-page,
-  .patients-page,
-  .appointments-page {
-    padding: 12px;
-  }
-
-  /* GRID -> 2 columns */
-  .doctors-grid,
-  .patients-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  /* SEARCH + FILTER STACK */
-  .doctors-page > div {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  input,
-  select {
-    width: 100% !important;
-  }
-
-  /* CARDS SMALLER */
-  .doctor-card-small,
-  .patient-card {
-    padding: 10px;
-  }
-
-  .doctor-avatar,
-  .patient-avatar {
-    width: 55px;
-    height: 55px;
-  }
-
-  .doctor-name,
-  .patient-name {
-    font-size: 13px;
-  }
-
-  .doctor-specialty,
-  .patient-specialty {
-    font-size: 11px;
-    padding: 3px 6px;
-  }
-
-  /* MODAL FULL RESPONSIVE */
-  .modal-overlay {
-    padding: 10px;
-  }
-
-  .modal-card {
+  html,
+  body {
     width: 100%;
-    max-width: 95%;
-    border-radius: 12px;
+    overflow-x: hidden;
   }
 
-  .modal-avatar {
-    width: 75px;
-    height: 75px;
+  /* CONTENT */
+  .wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
-}
 
-@media (max-width: 480px) {
-
-  /* SINGLE COLUMN ON SMALL PHONES */
+  /* CARDS */
   .doctors-grid,
   .patients-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-title {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .close-btn {
-    font-size: 14px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    width: 100%;
   }
 
   .doctor-card-small,
   .patient-card {
-    padding: 12px;
+    width: 100%;
+    min-height: 140px;
+  }
+
+  /* MODAL */
+  .modal-card {
+    width: 95%;
+    max-width: 380px;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+  }
+
+  /* CALENDAR */
+  .calendar-container {
+    width: 100%;
+    overflow-x: auto;
   }
 }
+
+
