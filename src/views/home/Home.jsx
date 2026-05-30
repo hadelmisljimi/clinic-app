@@ -146,10 +146,6 @@ const Home = () => {
         }
 
         
-
-
-
-        
       `}</style>
     </div>
   );
