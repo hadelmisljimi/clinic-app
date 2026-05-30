@@ -91,7 +91,7 @@ const AppointmentCard = ({
 
         <div>
           <b>{doctorName}</b>
-          <div style={styles.small}>{specialty}</div>
+          <div className="doctor-specialty">{specialty}</div>
         </div>
       </div>
 

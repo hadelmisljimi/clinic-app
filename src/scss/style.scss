@@ -112,7 +112,7 @@ body.dark-theme {
 
 
 /* =========================
-   MEDICAL COREUI THEME FIX
+   MEDICAL  THEME FIX
 ========================= */
 
 .doctors-page {
@@ -195,6 +195,7 @@ body.dark-theme {
   z-index: 999;
 }
 
+
 /* CARD */
 .modal-card {
   background: #ffffff;
@@ -213,7 +214,9 @@ body.dark-theme {
   border-radius: 50%;
   border: 3px solid #2563eb;
   margin-bottom: 10px;
+
 }
+
 
 /* INFO */
 .modal-info {
@@ -223,11 +226,12 @@ body.dark-theme {
   color: #111827;
 }
 
+
 /* ONLY CLOSE BUTTON BOTTOM */
 .close-btn {
   margin-top: 18px;
   background: #2563eb;
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 9px 16px;
   border-radius: 10px;
@@ -239,6 +243,20 @@ body.dark-theme {
   background: #1d4ed8;
 }
 
+.modal-card .badge,
+.modal-card .doctor-specialty {
+  background: #e7f1ff !important;   /* isto kao pacijent */
+  color: #2563eb !important;        /* plava slova */
+  border: 1px solid #3b82f6 !important;
+
+  padding: 5px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  display: inline-block;
+}
 
 
 
@@ -526,13 +544,7 @@ body {
   --border-color: #d1d5db;
 }
 
-/* DARK MODE */
-body.dark-theme {
-  --text-color: #f9fafb;
-  --card-bg: #1e293b;
-  --input-bg: #0f172a;
-  --border-color: #334155;
-}
+
 
 /* GLOBAL TEXT */
 .dynamic-text {
@@ -555,4 +567,116 @@ body.dark-theme {
 
 .dynamic-input::placeholder {
   color: #94a3b8;
+}
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE MOBILE FIX
+========================= */
+
+@media (max-width: 1024px) {
+  .doctors-grid,
+  .patients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .modal-card {
+    width: 90%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* PAGE PADDING FIX */
+  .doctors-page,
+  .patients-page,
+  .appointments-page {
+    padding: 12px;
+  }
+
+  /* GRID -> 2 columns */
+  .doctors-grid,
+  .patients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* SEARCH + FILTER STACK */
+  .doctors-page > div {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  input,
+  select {
+    width: 100% !important;
+  }
+
+  /* CARDS SMALLER */
+  .doctor-card-small,
+  .patient-card {
+    padding: 10px;
+  }
+
+  .doctor-avatar,
+  .patient-avatar {
+    width: 55px;
+    height: 55px;
+  }
+
+  .doctor-name,
+  .patient-name {
+    font-size: 13px;
+  }
+
+  .doctor-specialty,
+  .patient-specialty {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  /* MODAL FULL RESPONSIVE */
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 95%;
+    border-radius: 12px;
+  }
+
+  .modal-avatar {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* SINGLE COLUMN ON SMALL PHONES */
+  .doctors-grid,
+  .patients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .close-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .doctor-card-small,
+  .patient-card {
+    padding: 12px;
+  }
 }
