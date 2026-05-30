@@ -3,7 +3,7 @@ import axios from "axios";
 
 import API_URL from "../../config/api";
 
-const response = await fetch(`${API_URL}/api/patients`);
+const API = `${API_URL}/api/patients`;
 
 // 🔹 initials
 const getInitials = (name) => {

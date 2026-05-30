@@ -6,7 +6,7 @@ import { doctorToSpecialty } from "../doctors/doctors_specialties";
 
 import API_URL from "../../config/api";
 
-const response = await fetch(`${API_URL}/api/appointments`);
+const API = `${API_URL}/api/appointments`;
 
 // =========================
 // DATE FORMAT

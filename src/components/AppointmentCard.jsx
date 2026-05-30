@@ -1,5 +1,6 @@
 import React from "react";
 
+
 // =========================
 // DOCTOR IMAGES (SAFE PATHS)
 // =========================
@@ -18,7 +19,7 @@ const doctorImages = {
   "Dr. Ava Clark": "/images/doctors/14.jpg",
   "Dr. Daniel Lewis": "/images/doctors/7.jpg",
   "Dr. Mia Walker": "/images/doctors/15.jpg",
-  "Dr Anil Fazlija": "/images/doctors/8.jpg",
+  "Dr. Anil Fazlija": "/images/doctors/8.jpg",
 };
 
 // =========================
@@ -39,7 +40,7 @@ const doctorSpecialties = {
   "Dr. Ava Clark": "GENERAL_PRACTITIONER",
   "Dr. Daniel Lewis": "ENT_SPECIALIST",
   "Dr. Mia Walker": "OPHTHALMOLOGIST",
-  "Dr Anil Fazlija": "GENERAL_PRACTITIONER",
+  "Dr. Anil Fazlija": "GENERAL_PRACTITIONER",
 };
 
 // =========================
@@ -76,14 +77,17 @@ const AppointmentCard = ({
     <div style={styles.card}>
       {/* DOCTOR */}
       <div style={styles.row}>
-        <img
-          src={doctorImages[doctorName] || "/images/doctors/default.jpg"}
-          alt="doctor"
-          style={styles.img}
-          onError={(e) => {
-            e.target.src = "/images/doctors/default.jpg";
-          }}
-        />
+        {doctorImages[doctorName] ? (
+  <img
+    src={doctorImages[doctorName]}
+    alt={doctorName}
+    style={styles.img}
+  />
+) : (
+  <div style={styles.avatar}>
+    {getInitials(doctorName)}
+  </div>
+)}
 
         <div>
           <b>{doctorName}</b>

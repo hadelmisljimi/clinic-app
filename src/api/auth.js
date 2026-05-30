@@ -3,7 +3,7 @@ import API_URL from "../config/api"
 
 // LOGIN
 export const login = async (username, password) => {
-  const res = await axios.post(
+  const response = await axios.post(
     `${API_URL}/api/auth/login`,
     {
       username,
@@ -11,7 +11,7 @@ export const login = async (username, password) => {
     }
   )
 
-  return res.data
+  return response.data
 }
 
 // REGISTER PATIENT

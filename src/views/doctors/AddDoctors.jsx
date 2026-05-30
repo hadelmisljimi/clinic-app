@@ -4,7 +4,7 @@ import { specialties, doctorImages } from "./doctors_specialties";
 
 import API_URL from "../../config/api";
 
-const response = await fetch(`${API_URL}/api/doctors`);
+const API = `${API_URL}/api/doctors`;
 
 
 
