@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useColorModes } from "@coreui/react";
 
+
 import AppContent from "../components/AppContent";
 import AppFooter from "../components/AppFooter";
 import AppHeader from "../components/AppHeader";
@@ -37,26 +38,39 @@ const DefaultLayout = () => {
     "/patients/add",
   ];
 
+  const publicRoutes = [
+  "/login",
+  "/register",
+  "/forgot-password"
+]
+
   const showSidebar = dashboardRoutes.some((route) =>
     location.pathname.startsWith(route)
   );
 
+  const isPublicPage = publicRoutes.some((route) =>
+  location.pathname.startsWith(route)
+)
+
   return (
-    <div>
-      {/* SIDEBAR ONLY FOR DASHBOARD ROUTES */}
-      {showSidebar && <AppSidebar />}
+  <div>
+    {/* SIDEBAR ONLY FOR DASHBOARD ROUTES */}
+    {showSidebar && !isPublicPage && <AppSidebar />}
 
-      <div className="wrapper d-flex flex-column min-vh-100">
-        <AppHeader />
+    <div className="wrapper d-flex flex-column min-vh-100">
+      
+      {/* HEADER ONLY FOR DASHBOARD */}
+      {!isPublicPage && <AppHeader />}
 
-        <div className="body flex-grow-1">
-          <AppContent />
-        </div>
-
-        <AppFooter />
+      <div className="body flex-grow-1">
+        <AppContent />
       </div>
+
+      {/* FOOTER ONLY FOR DASHBOARD */}
+      {!isPublicPage && <AppFooter />}
     </div>
-  );
+  </div>
+);
 };
 
 export default DefaultLayout;

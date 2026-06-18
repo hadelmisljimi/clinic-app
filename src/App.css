@@ -182,3 +182,64 @@
     border-right-color: var(--border);
   }
 }
+
+
+/* ===================================== */
+/* MOBILE FIX */
+/* ===================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header da stane na telefon */
+header,
+.navbar,
+.topbar {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Sve sekcije da ne izlaze van ekrana */
+section,
+main,
+.container,
+.page-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* TELEFON */
+@media (max-width: 768px) {
+  header,
+  .navbar,
+  .topbar {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .page-container,
+  main,
+  section {
+    overflow-x: hidden;
+  }
+}

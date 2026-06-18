@@ -14,15 +14,43 @@ const Login = () => {
       setMessage("")
 
       // VALIDACIJA
-      if (!username.trim()) {
-        setMessage("❌ Username is required")
-        return
-      }
+if (!username.trim()) {
+  setMessage("❌ Full name is required")
+  return
+}
 
-      if (!password.trim()) {
-        setMessage("❌ Password is required")
-        return
-      }
+if (!password.trim()) {
+  setMessage("❌ Password is required")
+  return
+}
+
+if (username !== "admin") {
+
+  const fullNameRegex =
+    /^[A-ZČĆŽŠĐА-Я][a-zčćžšđа-я]+ [A-ZČĆŽŠĐА-Я][a-zčćžšđа-я]+$/
+
+  if (!fullNameRegex.test(username)) {
+    setMessage(
+      "❌ Please enter full name and surname (e.g. Marko Markovic)"
+    )
+    return
+  }
+
+  if (password.length < 5) {
+    setMessage("❌ Password must contain at least 5 characters")
+    return
+  }
+
+  if (!/^[A-Z]/.test(password)) {
+    setMessage("❌ Password must start with a capital letter")
+    return
+  }
+
+  if (!/[0-9]/.test(password)) {
+    setMessage("❌ Password must contain at least one number")
+    return
+  }
+}
 
       const data = await login(username, password)
 
@@ -105,13 +133,13 @@ const Login = () => {
         {/* USERNAME */}
         <div className="mb-3">
           <label className="fw-bold mb-2">
-            Username
+            Full Name
           </label>
 
           <input
             type="text"
             className="form-control dynamic-input"
-            placeholder="Enter username"
+            placeholder="Enter full name and surname"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             style={{
@@ -139,6 +167,19 @@ const Login = () => {
             }}
           />
         </div>
+        <div
+  onClick={() => navigate("/forgot-password")}
+  style={{
+    color: "#dc2626",
+    cursor: "pointer",
+    fontWeight: "600",
+    marginTop: "-10px",
+    marginBottom: "20px",
+    textAlign: "right",
+  }}
+>
+  Forgot Password?
+</div>
 
         {/* LOGIN */}
         <button

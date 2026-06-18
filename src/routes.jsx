@@ -24,6 +24,9 @@ const EditPatients = React.lazy(() => import("./views/patients/EditPatients"));
 
 const Login = React.lazy(() => import("./views/pages/login/Login"));
 const Register = React.lazy(() => import("./views/pages/register/Register"));
+const ForgotPassword = React.lazy(() =>
+  import("./views/pages/forgotpassword/ForgotPassword")
+)
 const Authorize = React.lazy(() => import("./views/pages/authorize/Authorize"));
 
 /* ===== GUARDS ===== */
@@ -116,6 +119,7 @@ export const routes = [
 
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
+  { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/authorize", element: <Authorize /> },
 ];
 

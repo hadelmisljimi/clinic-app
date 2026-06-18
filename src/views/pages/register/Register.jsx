@@ -9,81 +9,102 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [type, setType] = useState("patient")
   const [message, setMessage] = useState("")
+  const [securityAnswer, setSecurityAnswer] = useState("")
 
   const role = localStorage.getItem("role")
   const token = localStorage.getItem("token")
+  
 
   const handleRegister = async () => {
-    try {
-      setMessage("")
-
-      // VALIDACIJA
-      if (!username.trim()) {
-        setMessage("❌ Username is required")
-        return
-      }
-
-      if (username.length < 3) {
-        setMessage("❌ Username must have at least 3 characters")
-        return
-      }
-
-      if (!password.trim()) {
-        setMessage("❌ Password is required")
-        return
-      }
-
-      if (password.length < 3) {
-        setMessage("❌ Password must have at least 3 characters")
-        return
-      }
-
-      // REGISTER PATIENT
-      if (type === "patient") {
-  await registerPatient(username, password)
-
-  setMessage("✅ Patient registered successfully")
-
-  setTimeout(() => {
+  try {
     setMessage("")
-  }, 3000)
-}
 
-      // REGISTER DOCTOR
-      if (type === "doctor") {
-  if (role !== "ADMIN") {
-    setMessage("❌ Only ADMIN can register doctors")
-    return
-  }
+    // CLEAN INPUT (KLJUČNO ZA TVOJ BUG)
+    const cleanUsername = username.trim().replace(/\s+/g, " ")
+    const cleanPassword = password.trim()
 
-  await registerDoctor(username, password, token)
+    // VALIDACIJA USERNAME
+    if (!cleanUsername) {
+      setMessage("❌ Full name is required")
+      return
+    }
 
-  setMessage("✅ Doctor registered successfully")
+    const fullNameRegex =
+      /^[A-ZČĆŽŠĐА-Я][a-zčćžšđа-я]+ [A-ZČĆŽŠĐА-Я][a-zčćžšđа-я]+$/
 
-  setTimeout(() => {
-    setMessage("")
-  }, 3000)
-}
+    if (!fullNameRegex.test(cleanUsername)) {
+      setMessage("❌ Please enter full name and surname (e.g. Marko Markovic)")
+      return
+    }
 
-      setUsername("")
-      setPassword("")
-      setType("patient")
-    } catch (err) {
-      console.log(err)
+    // VALIDACIJA PASSWORD
+    if (!cleanPassword) {
+      setMessage("❌ Password is required")
+      return
+    }
 
-      if (err.response?.status === 400) {
-        setMessage("❌ Username already exists")
-      } else if (err.response?.status === 401) {
-        setMessage("❌ Unauthorized")
-      } else if (err.response?.status === 403) {
+    if (cleanPassword.length < 5) {
+      setMessage("❌ Password must contain at least 5 characters")
+      return
+    }
+
+    if (!/^[A-Z]/.test(cleanPassword)) {
+      setMessage("❌ Password must start with a capital letter")
+      return
+    }
+
+    if (!/[0-9]/.test(cleanPassword)) {
+      setMessage("❌ Password must contain at least one number")
+      return
+    }
+
+    // REGISTER PATIENT
+    if (type === "patient") {
+      await registerPatient(cleanUsername, cleanPassword, securityAnswer)
+
+      setMessage("✅ Patient registered successfully")
+
+      setTimeout(() => {
+        setMessage("")
+      }, 3000)
+    }
+
+    // REGISTER DOCTOR
+    if (type === "doctor") {
+      if (role !== "ADMIN") {
         setMessage("❌ Only ADMIN can register doctors")
-      } else if (err.code === "ERR_NETWORK") {
-        setMessage("❌ Cannot connect to server")
-      } else {
-        setMessage("❌ Registration failed")
+        return
       }
+
+      await registerDoctor(cleanUsername, cleanPassword, securityAnswer, token)
+
+      setMessage("✅ Doctor registered successfully")
+
+      setTimeout(() => {
+        setMessage("")
+      }, 3000)
+    }
+
+    setUsername("")
+    setPassword("")
+    setType("patient")
+
+  } catch (err) {
+    console.log(err)
+
+    if (err.response?.status === 400) {
+      setMessage(err.response?.data?.message || "❌ Username already exists")
+    } else if (err.response?.status === 401) {
+      setMessage("❌ Unauthorized")
+    } else if (err.response?.status === 403) {
+      setMessage("❌ Only ADMIN can register doctors")
+    } else if (err.code === "ERR_NETWORK") {
+      setMessage("❌ Cannot connect to server")
+    } else {
+      setMessage("❌ Registration failed")
     }
   }
+}
 
   return (
     <div
@@ -181,13 +202,15 @@ const Register = () => {
         {/* USERNAME */}
         <div className="mb-3">
           <label className="fw-bold mb-2">
-            Username
+            Username 
           </label>
+
+
 
           <input
             type="text"
             className="form-control dynamic-input"
-            placeholder="Enter username"
+            placeholder="Enter full name (e.g. Marko Markovic)"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             style={{
@@ -215,6 +238,18 @@ const Register = () => {
             }}
           />
         </div>
+        {/* SECURITY INPUT + CONFIRM BUTTON */}
+<small style={{ color: "#64748b", display: "block", marginBottom: "6px" }}>
+  Choose a security word (example: favorite color or simple word).
+  You will use this word to reset your password if you forget it.
+</small>
+        <input
+  type="text"
+  className="form-control dynamic-input mb-3"
+  placeholder="Security word"
+  value={securityAnswer}
+  onChange={(e) => setSecurityAnswer(e.target.value)}
+/>
 
         {/* BUTTON */}
         <button
